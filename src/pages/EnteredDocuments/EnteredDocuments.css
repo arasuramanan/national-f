@@ -1,0 +1,15 @@
+.entered-documents {
+    padding: 30px;
+}
+
+.entered-documents h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.table-container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+}
