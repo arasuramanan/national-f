@@ -67,7 +67,7 @@ useEffect(() => {
       payload
     );
 
-    
+    console.log(result.data);
     await fetchData(); 
 
     toast.success("Form submitted successfully!");
