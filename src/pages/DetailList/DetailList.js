@@ -163,10 +163,21 @@ useEffect(() => {
     .join("");
 
   const html = `
-    <div style="padding:20px;font-family:Arial">
-      <h2 style="text-align:center;margin-bottom:20px;">
-        UPSI Details Report
-      </h2>
+    <h2 style="
+  text-align:center;
+  margin-bottom:5px;
+">
+  National Fittings Limited
+</h2>
+
+<h3 style="
+  text-align:center;
+  margin-top:0;
+  margin-bottom:20px;
+  font-weight:600;
+">
+  UPSI Details Report
+</h3>
 
       <table style="border-collapse:collapse;width:100%;font-size:10px;">
         <thead>
