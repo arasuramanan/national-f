@@ -17,8 +17,7 @@ function Login() {
 
     try {
       const url = `${process.env.REACT_APP_URL}/api/auth/login`;
-        console.log("REACT_APP_URL =", process.env.REACT_APP_URL);
-    console.log("Login URL =", url);
+    
       const res = await axios.post(
         url,
         {
