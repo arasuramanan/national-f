@@ -1,0 +1,55 @@
+.audit-container {
+  padding: 30px;
+  width: 100%;
+}
+
+.audit-container h2 {
+  color: white;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.audit-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.audit-table th,
+.audit-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.audit-table th {
+  background: #f2f2f2;
+  font-weight: 600;
+}
+
+.audit-table tr:hover {
+  background: #f8f8f8;
+}
+
+.audit-loading {
+  padding: 30px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.audit-error {
+  padding: 30px;
+  color: red;
+  text-align: center;
+}
+
+.audit-empty {
+  padding: 20px 0;
+  color: #666;
+}

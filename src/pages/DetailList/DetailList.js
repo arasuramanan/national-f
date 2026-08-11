@@ -23,7 +23,10 @@ function DetailsList() {
   const fetchData = async () => {
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_URL}/api/details`
+      `${process.env.REACT_APP_URL}/api/details`,
+        {
+          withCredentials: true,
+  }
     );
 
     setJsonData(response.data);
@@ -64,7 +67,10 @@ useEffect(() => {
 
     const result = await axios.post(
       `${process.env.REACT_APP_URL}/api/detailsnewform`,
-      payload
+      payload,
+       {
+      withCredentials: true,
+  }
     );
 
     console.log(result.data);
