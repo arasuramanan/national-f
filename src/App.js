@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
@@ -15,6 +15,7 @@ function App() {
     <Router>
       <div className="App">
         <Toaster position="top-right" reverseOrder={false} />
+         <Routes>
         <Route element={<ProtectedRoute />}>
           <Route path="/list" element={<div><Header /><DetailsList /></div>} />
           <Route path="/" element={<Login />} />
@@ -22,6 +23,7 @@ function App() {
           <Route path="/entered-documents" element={<div><Header /><EnteredDocuments /></div>}/>
           <Route path="/audit-trail" element={<div><Header /><AuditTrail /></div>}/>
         </Route>
+        </Routes>
       </div>
     </Router>
   );
