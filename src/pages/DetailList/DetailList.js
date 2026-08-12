@@ -4,7 +4,6 @@ import axios from 'axios';
 import './DetailList.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import html2pdf from 'html2pdf.js';
 import ExcelJS from 'exceljs';
 import toast from "react-hot-toast";
 
@@ -132,135 +131,6 @@ useEffect(() => {
 
   
 
-
-  
-  // const generatePdf = () => {
-
-    
-  //   if (!jsonData) return;
-
-    
-  
-  //   const pdfContainer = document.createElement('div');
-  //   pdfContainer.innerHTML = `<pre>${JSON.stringify(jsonData, null, 2)}</pre>`;
-  
-  //   html2pdf()
-  //     .set({ margin: 0.5 })
-  //     .from(pdfContainer)
-  //     .save()
-  //     .then((pdf) => {
-  //       saveAs(pdf, 'data.pdf');
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error generating PDF:', error);
-  //     });
-      
-  // };
-
-  const generatePdf = () => {
-  if (!jsonData || jsonData.length === 0) {
-    toast.error("No data available to export");
-    return;
-  }
-
-  const tableRows = jsonData
-    .map(
-      (item) => `
-      <tr>
-        <td>${item.NameoftheUPSI || ""}</td>
-        <td>${item.InfoSharedBy || ""}</td>
-        <td>${item.PANNumber1 || ""}</td>
-        <td>${item.InformationSharedInCapacity1 || ""}</td>
-        <td>${item.Designation1 || ""}</td>
-        <td>${item.InfoSharedTo || ""}</td>
-        <td>${item.PANNumber2 || ""}</td>
-        <td>${item.InformationSharedInCapacity2 || ""}</td>
-        <td>${item.Designation2 || ""}</td>
-        <td>${item.TypeofOrganization || ""}</td>
-        <td>${item.NameoftheOrganization || ""}</td>
-        <td>${item.DateofSharing?.split("T")[0] || ""}</td>
-        <td>${item.ParticularofInfoShared || ""}</td>
-        <td>${item.PurposeofSharing || ""}</td>
-        <td>${item.ModeofSharing || ""}</td>
-        <td>${item.TimeofSharing || ""}</td>
-      </tr>
-    `
-    )
-    .join("");
-
-  const html = `
-    <h2 style="
-  text-align:center;
-  margin-bottom:5px;
-">
-  National Fittings Limited
-</h2>
-
-<h3 style="
-  text-align:center;
-  margin-top:0;
-  margin-bottom:20px;
-  font-weight:600;
-">
-  UPSI Details Report
-</h3>
-
-      <table style="border-collapse:collapse;width:100%;font-size:10px;">
-        <thead>
-          <tr style="background:#e5e5e5;">
-            <th>Name of UPSI</th>
-            <th>Info Shared By</th>
-            <th>PAN 1</th>
-            <th>Capacity 1</th>
-            <th>Designation 1</th>
-            <th>Info Shared To</th>
-            <th>PAN 2</th>
-            <th>Capacity 2</th>
-            <th>Designation 2</th>
-            <th>Organization Type</th>
-            <th>Organization</th>
-            <th>Date</th>
-            <th>Particular</th>
-            <th>Purpose</th>
-            <th>Mode</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          ${tableRows}
-        </tbody>
-      </table>
-    </div>
-  `;
-
-  const element = document.createElement("div");
-  element.innerHTML = html;
-
-html2pdf()
-  .set({
-    margin: 0.3,
-    filename: "UPSI_Details_Report.pdf",
-    image: { type: "jpeg", quality: 1 },
-    html2canvas: {
-      scale: 2,
-    },
-    jsPDF: {
-      unit: "in",
-      format: "a2",
-      orientation: "landscape",
-    },
-  })
-  .from(element)
-  .save()
-  .then(() => {
-    toast.success("PDF downloaded successfully!");
-  })
-  .catch((error) => {
-    console.error(error);
-    toast.error("Failed to download PDF");
-  });
-};
   
 
   const convertToExcel = () => {
@@ -549,9 +419,6 @@ worksheet.columns = [
 
     <div className="row">
       <div className="col-md-6">
-    {/* <button type="button" onClick={generatePdf} className="button downloads-button">
-      PDF- file
-    </button> */}
 
     <button type="button" onClick={exportPDF}>
                 Export PDF
