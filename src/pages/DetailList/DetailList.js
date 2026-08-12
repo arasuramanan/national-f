@@ -19,25 +19,36 @@ function DetailsList() {
 
   // PDF EXPORT
   const exportPDF = async () => {
-    try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_URL}/api/export/pdf`,
-        {
-          responseType: "blob",
-          withCredentials: true,
-        }
-      );
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_URL}/api/export/pdf`,
+      {
+        withCredentials: true,
+        responseType: "blob",
+      }
+    );
 
-      const pdfBlob = new Blob([response.data], {
-        type: "application/pdf",
-      });
+    const url = window.URL.createObjectURL(
+      new Blob([response.data], { type: "application/pdf" })
+    );
 
-      saveAs(pdfBlob, "UPSI_Details_Report.pdf");
-    } catch (error) {
-      console.error("PDF export failed:", error);
-      toast.error("Failed to export PDF");
-    }
-  };
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "UPSI_Details_Report.pdf");
+
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+
+    window.URL.revokeObjectURL(url);
+
+    toast.success("PDF exported successfully!");
+  } catch (error) {
+    console.error("PDF export failed:", error);
+    toast.error("Failed to export PDF");
+  }
+};
+
 
   const fetchData = async () => {
   try {
