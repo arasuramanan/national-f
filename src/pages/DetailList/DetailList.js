@@ -547,15 +547,15 @@ worksheet.columns = [
 
     <div className="row" style={{ marginTop: '20px' }}></div>
 
-<div className="row">
-  <div className="col-md-6">
+    <div className="row">
+      <div className="col-md-6">
     <button type="button" onClick={generatePdf} className="button downloads-button">
       PDF- file
     </button>
 
-    <button onClick={exportPDF}>
-  Export PDF
-</button>
+    <button type="button" onClick={exportPDF}>
+                Export PDF
+    </button>
   </div>
 </div>
 
