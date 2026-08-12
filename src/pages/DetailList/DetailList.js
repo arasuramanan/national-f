@@ -18,7 +18,27 @@ function DetailsList() {
   const [jsonData, setJsonData] = useState(null);
 
 
+  // PDF EXPORT
+  const exportPDF = async () => {
+    try {
+      const response = await axios.get(
+        `${process.env.REACT_APP_URL}/api/export/pdf`,
+        {
+          responseType: "blob",
+          withCredentials: true,
+        }
+      );
 
+      const pdfBlob = new Blob([response.data], {
+        type: "application/pdf",
+      });
+
+      saveAs(pdfBlob, "UPSI_Details_Report.pdf");
+    } catch (error) {
+      console.error("PDF export failed:", error);
+      toast.error("Failed to export PDF");
+    }
+  };
 
   const fetchData = async () => {
   try {
@@ -532,6 +552,10 @@ worksheet.columns = [
     <button type="button" onClick={generatePdf} className="button downloads-button">
       PDF- file
     </button>
+
+    <button onClick={exportPDF}>
+  Export PDF
+</button>
   </div>
 </div>
 
