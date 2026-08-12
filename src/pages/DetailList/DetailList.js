@@ -549,9 +549,9 @@ worksheet.columns = [
 
     <div className="row">
       <div className="col-md-6">
-    <button type="button" onClick={generatePdf} className="button downloads-button">
+    {/* <button type="button" onClick={generatePdf} className="button downloads-button">
       PDF- file
-    </button>
+    </button> */}
 
     <button type="button" onClick={exportPDF}>
                 Export PDF
