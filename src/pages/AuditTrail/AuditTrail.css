@@ -79,6 +79,10 @@
   margin-bottom: 20px;
 }
 
+.audit-header h2 {
+  color: white;
+}
+
 .audit-export-button {
   padding: 10px 18px;
   border: none;
