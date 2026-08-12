@@ -84,16 +84,18 @@ useEffect(() => {
       TimeofSharing: timeValue,
     };
 
-    const result = await axios.post(
-      `${process.env.REACT_APP_URL}/api/detailsnewform`,
-      payload,
-       {
-      withCredentials: true,
+      const response = await axios.post(
+  `${process.env.REACT_APP_URL}/api/detailsnewform`,
+  payload,
+  {
+    withCredentials: true,
   }
-    );
+  );
 
-    console.log(result.data);
-    await fetchData(); 
+    setJsonData((prevData) => [
+      ...(prevData || []),
+      response.data.data,
+      ]);
 
     toast.success("Form submitted successfully!");
 
@@ -418,7 +420,12 @@ const handleLogout = async () => {
 
     <div className="row">
       <div className="col-md-6">
-        <button type="submit">SUBMIT</button>
+        <button
+        type="submit"
+        disabled={formik.isSubmitting}
+          >
+      {formik.isSubmitting ? "Submitting..." : "SUBMIT"}
+      </button>
       </div>
     </div>
 
