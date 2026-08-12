@@ -131,3 +131,10 @@
 .login-container a:hover{
     color:#ffb347;
 }
+
+
+.login-container button:disabled {
+  background: #999;
+  cursor: not-allowed;
+  transform: none;
+}

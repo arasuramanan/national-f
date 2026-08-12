@@ -11,9 +11,13 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   async function submit(e) {
     e.preventDefault();
+      if (isLoading) return;
+
+      setIsLoading(true);
 
     try {
       const url = `${process.env.REACT_APP_URL}/api/auth/login`;
@@ -44,8 +48,10 @@ function Login() {
       toast.error(
         err.response?.data?.message || "Something went wrong."
       );
-    }
+    }finally {
+    setIsLoading(false);
   }
+}
 
   return (
     <div className="login-page">
@@ -81,9 +87,12 @@ function Login() {
             required
           />
 
-          <button type="submit">
-            Login
-          </button>
+       <button
+        type="submit"
+        disabled={isLoading}
+        >
+        {isLoading ? "Logging in..." : "Login"}
+      </button>
         </form>
 
         <div className="separator">
