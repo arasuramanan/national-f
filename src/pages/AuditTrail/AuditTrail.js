@@ -209,18 +209,20 @@ function AuditTrail() {
 
             <button
               type="button"
+              className="audit-pagination-button"
               onClick={handlePrevious}
               disabled={cursorHistory.length === 0}
             >
               ← Previous
             </button>
 
-            <span>
-              Showing {auditData.length} records
-            </span>
+        <span className="audit-pagination-text">
+            Showing {auditData.length} records
+          </span>
 
             <button
               type="button"
+              className="audit-pagination-button"
               onClick={handleNext}
               disabled={!hasNext}
             >

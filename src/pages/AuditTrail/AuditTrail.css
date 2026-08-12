@@ -53,3 +53,21 @@
   padding: 20px 0;
   color: #666;
 }
+
+
+.audit-pagination-text {
+  color: white;
+}
+
+.audit-pagination-button {
+  color: white;
+}
+
+
+.audit-loading {
+  color: white;
+}
+
+.audit-empty {
+  color: white;
+}
