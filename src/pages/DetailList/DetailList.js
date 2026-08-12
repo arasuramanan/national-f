@@ -183,14 +183,21 @@ worksheet.columns = [
   });
 };
 
+const handleLogout = async () => {
+  try {
+    await axios.post(
+      `${process.env.REACT_APP_URL}/api/auth/logout`,
+      {},
+      {
+        withCredentials: true,
+      }
+    );
 
-  async function handleLogout() {
-    try {
-      navigate('/');
-    } catch (error) {
-      console.log(error);
-    }
+    navigate("/", { replace: true });
+  } catch (error) {
+    console.error("Logout failed:", error);
   }
+};
 
   return (
     <form onSubmit={formik.handleSubmit}>
