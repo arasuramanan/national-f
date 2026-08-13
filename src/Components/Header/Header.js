@@ -31,14 +31,14 @@ const Header = () => {
 
   return (
     <nav className="app-navbar">
-      <div className="navbar-container">
+      <div className="app-navbar-container">
 
         {/* Logo */}
         <a
           href="https://www.nationalfitting.com/"
           target="_blank"
           rel="noopener noreferrer"
-          className="navbar-logo"
+          className="app-navbar-logo"
         >
           <img
             src="https://www.nationalfitting.com/wp-content/uploads/2016/11/logo.png"
@@ -49,10 +49,12 @@ const Header = () => {
         {/* Mobile Menu Button */}
         <button
           type="button"
-          className={`navbar-toggler ${
+          className={`app-navbar-toggler ${
             isMenuOpen ? "active" : ""
           }`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          onClick={() =>
+            setIsMenuOpen((previous) => !previous)
+          }
           aria-label="Toggle navigation menu"
           aria-expanded={isMenuOpen}
         >
@@ -63,15 +65,15 @@ const Header = () => {
 
         {/* Navigation */}
         <div
-          className={`navbar-menu ${
+          className={`app-navbar-menu ${
             isMenuOpen ? "open" : ""
           }`}
         >
-          <div className="navbar-nav">
+          <div className="app-navbar-nav">
 
             {/* UPSI */}
             <Link
-              className="nav-link"
+              className="app-nav-link"
               to="/list"
               onClick={closeMenu}
             >
@@ -80,7 +82,7 @@ const Header = () => {
 
             {/* Audit Trail */}
             <a
-              className="nav-link"
+              className="app-nav-link"
               href="/audit-trail"
               target="_blank"
               rel="noopener noreferrer"
@@ -92,7 +94,7 @@ const Header = () => {
             {/* Logout */}
             <button
               type="button"
-              className="nav-link logout-button"
+              className="app-nav-link app-logout-button"
               onClick={handleLogout}
             >
               Logout

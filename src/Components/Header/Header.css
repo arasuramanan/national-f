@@ -5,12 +5,14 @@
 .app-navbar {
   width: 100%;
   background: #ffffff;
+
   position: relative;
   z-index: 1000;
+
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
-.navbar-container {
+.app-navbar-container {
   width: 100%;
   min-height: 70px;
 
@@ -22,18 +24,19 @@
   position: relative;
 }
 
+
 /* ================================
    LOGO
 ================================ */
 
-.navbar-logo {
+.app-navbar-logo {
   display: flex;
   align-items: center;
 
   flex-shrink: 0;
 }
 
-.navbar-logo img {
+.app-navbar-logo img {
   display: block;
 
   width: auto;
@@ -44,21 +47,23 @@
   object-fit: contain;
 }
 
+
 /* ================================
    NAVIGATION
 ================================ */
 
-.navbar-menu {
+.app-navbar-menu {
   margin-left: auto;
 }
 
-.navbar-nav {
+.app-navbar-nav {
   display: flex;
   align-items: center;
+
   gap: 10px;
 }
 
-.nav-link {
+.app-nav-link {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,6 +73,7 @@
   padding: 8px 20px;
 
   color: #222;
+
   text-decoration: none;
 
   font-size: 16px;
@@ -80,16 +86,17 @@
     color 0.2s ease;
 }
 
-.nav-link:hover {
+.app-nav-link:hover {
   background: #f1f1f1;
   color: #000;
 }
+
 
 /* ================================
    LOGOUT
 ================================ */
 
-.logout-button {
+.app-logout-button {
   background: blue;
 
   border: none;
@@ -109,17 +116,17 @@
   position: static;
 }
 
-.logout-button:hover {
+.app-logout-button:hover {
   background: #0000cc;
-
   color: white;
 }
+
 
 /* ================================
    HAMBURGER
 ================================ */
 
-.navbar-toggler {
+.app-navbar-toggler {
   display: none;
 
   width: 44px;
@@ -141,9 +148,11 @@
   align-items: center;
 
   gap: 5px;
+
+  flex-shrink: 0;
 }
 
-.navbar-toggler span {
+.app-navbar-toggler span {
   display: block;
 
   width: 25px;
@@ -158,19 +167,21 @@
     opacity 0.2s ease;
 }
 
+
 /* Hamburger animation */
 
-.navbar-toggler.active span:nth-child(1) {
+.app-navbar-toggler.active span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
 
-.navbar-toggler.active span:nth-child(2) {
+.app-navbar-toggler.active span:nth-child(2) {
   opacity: 0;
 }
 
-.navbar-toggler.active span:nth-child(3) {
+.app-navbar-toggler.active span:nth-child(3) {
   transform: translateY(-8px) rotate(-45deg);
 }
+
 
 /* ================================
    TABLET
@@ -178,23 +189,23 @@
 
 @media (max-width: 900px) {
 
-  .navbar-container {
+  .app-navbar-container {
     min-height: 65px;
-
     padding: 0 20px;
   }
 
-  .navbar-logo img {
+  .app-navbar-logo img {
     height: 45px;
-
     max-width: 190px;
   }
 
-  .navbar-toggler {
+  /* Show hamburger */
+  .app-navbar-toggler {
     display: flex;
   }
 
-  .navbar-menu {
+  /* Hide menu by default */
+  .app-navbar-menu {
     display: none;
 
     position: absolute;
@@ -210,13 +221,16 @@
     border-top: 1px solid #eeeeee;
 
     box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+
+    z-index: 1001;
   }
 
-  .navbar-menu.open {
+  /* Show menu when clicked */
+  .app-navbar-menu.open {
     display: block;
   }
 
-  .navbar-nav {
+  .app-navbar-nav {
     width: 100%;
 
     display: flex;
@@ -230,7 +244,7 @@
     padding: 10px 20px 15px;
   }
 
-  .nav-link {
+  .app-nav-link {
     width: 100%;
 
     justify-content: flex-start;
@@ -240,16 +254,21 @@
     border-radius: 6px;
 
     min-height: 48px;
+
+    box-sizing: border-box;
   }
 
-  .logout-button {
+  .app-logout-button {
     width: 100%;
 
     justify-content: flex-start;
 
     margin-top: 5px;
+
+    position: static;
   }
 }
+
 
 /* ================================
    MOBILE
@@ -257,29 +276,30 @@
 
 @media (max-width: 600px) {
 
-  .navbar-container {
+  .app-navbar-container {
     min-height: 60px;
 
     padding: 0 15px;
   }
 
-  .navbar-logo img {
+  .app-navbar-logo img {
     height: 40px;
 
     max-width: 170px;
   }
 
-  .navbar-nav {
+  .app-navbar-nav {
     padding-left: 15px;
     padding-right: 15px;
   }
 
-  .nav-link {
+  .app-nav-link {
     font-size: 15px;
 
     padding: 13px 12px;
   }
 }
+
 
 /* ================================
    VERY SMALL PHONES
@@ -287,17 +307,17 @@
 
 @media (max-width: 380px) {
 
-  .navbar-logo img {
+  .app-navbar-logo img {
     height: 36px;
 
     max-width: 150px;
   }
 
-  .navbar-container {
+  .app-navbar-container {
     padding: 0 10px;
   }
 
-  .navbar-toggler {
+  .app-navbar-toggler {
     width: 40px;
     height: 40px;
   }
