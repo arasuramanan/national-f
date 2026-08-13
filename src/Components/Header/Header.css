@@ -1,9 +1,304 @@
+/* ================================
+   HEADER
+================================ */
+
+.app-navbar {
+  width: 100%;
+  background: #ffffff;
+  position: relative;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.navbar-container {
+  width: 100%;
+  min-height: 70px;
+
+  display: flex;
+  align-items: center;
+
+  padding: 0 30px;
+
+  position: relative;
+}
+
+/* ================================
+   LOGO
+================================ */
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+
+  flex-shrink: 0;
+}
+
+.navbar-logo img {
+  display: block;
+
+  width: auto;
+  height: 50px;
+
+  max-width: 220px;
+
+  object-fit: contain;
+}
+
+/* ================================
+   NAVIGATION
+================================ */
+
+.navbar-menu {
+  margin-left: auto;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 40px;
+
+  padding: 8px 20px;
+
+  color: #222;
+  text-decoration: none;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  border-radius: 6px;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.nav-link:hover {
+  background: #f1f1f1;
+  color: #000;
+}
+
+/* ================================
+   LOGOUT
+================================ */
+
 .logout-button {
   background: blue;
+
   border: none;
+
   padding: 8px 26px;
+
   font: inherit;
+
   cursor: pointer;
-  position: relative;
-  bottom: 10px;
+
+  color: white;
+
+  border-radius: 6px;
+
+  min-height: 40px;
+
+  position: static;
+}
+
+.logout-button:hover {
+  background: #0000cc;
+
+  color: white;
+}
+
+/* ================================
+   HAMBURGER
+================================ */
+
+.navbar-toggler {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  margin-left: auto;
+
+  padding: 8px;
+
+  border: none;
+  border-radius: 6px;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+}
+
+.navbar-toggler span {
+  display: block;
+
+  width: 25px;
+  height: 3px;
+
+  background: #222;
+
+  border-radius: 3px;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* Hamburger animation */
+
+.navbar-toggler.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.navbar-toggler.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* ================================
+   TABLET
+================================ */
+
+@media (max-width: 900px) {
+
+  .navbar-container {
+    min-height: 65px;
+
+    padding: 0 20px;
+  }
+
+  .navbar-logo img {
+    height: 45px;
+
+    max-width: 190px;
+  }
+
+  .navbar-toggler {
+    display: flex;
+  }
+
+  .navbar-menu {
+    display: none;
+
+    position: absolute;
+
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+
+    background: #ffffff;
+
+    border-top: 1px solid #eeeeee;
+
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-menu.open {
+    display: block;
+  }
+
+  .navbar-nav {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 0;
+
+    padding: 10px 20px 15px;
+  }
+
+  .nav-link {
+    width: 100%;
+
+    justify-content: flex-start;
+
+    padding: 14px 15px;
+
+    border-radius: 6px;
+
+    min-height: 48px;
+  }
+
+  .logout-button {
+    width: 100%;
+
+    justify-content: flex-start;
+
+    margin-top: 5px;
+  }
+}
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 600px) {
+
+  .navbar-container {
+    min-height: 60px;
+
+    padding: 0 15px;
+  }
+
+  .navbar-logo img {
+    height: 40px;
+
+    max-width: 170px;
+  }
+
+  .navbar-nav {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .nav-link {
+    font-size: 15px;
+
+    padding: 13px 12px;
+  }
+}
+
+/* ================================
+   VERY SMALL PHONES
+================================ */
+
+@media (max-width: 380px) {
+
+  .navbar-logo img {
+    height: 36px;
+
+    max-width: 150px;
+  }
+
+  .navbar-container {
+    padding: 0 10px;
+  }
+
+  .navbar-toggler {
+    width: 40px;
+    height: 40px;
+  }
 }
