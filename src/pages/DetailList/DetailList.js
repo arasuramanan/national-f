@@ -3,16 +3,14 @@ import axios from 'axios';
 import toast from "react-hot-toast";
 import './DetailList.css';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 
 
 function DetailsList() {
   const [timeValue, setTimeValue] = useState('');
   const navigate = useNavigate();
-  const [jsonData, setJsonData] = useState(null);
-
-
+ 
   // PDF EXPORT
   const exportPDF = async () => {
   try {
@@ -45,25 +43,6 @@ function DetailsList() {
   }
 };
 
-
-  const fetchData = async () => {
-  try {
-    const response = await axios.get(
-      `${process.env.REACT_APP_URL}/api/details`,
-        {
-          withCredentials: true,
-  }
-    );
-
-    setJsonData(response.data);
-  } catch (error) {
-    console.error(error);
-  }
-};
-
-useEffect(() => {
-  fetchData();
-}, []);
 
   const formik = useFormik({
     initialValues: {
@@ -98,11 +77,6 @@ useEffect(() => {
     withCredentials: true,
   }
   );
-
-    setJsonData((prevData) => [
-      ...(prevData || []),
-      response.data.data,
-      ]);
 
     toast.success("Form submitted successfully!");
 
