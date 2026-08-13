@@ -1,13 +1,9 @@
-import { saveAs } from 'file-saver';
 import { useFormik } from 'formik';
 import axios from 'axios';
+import toast from "react-hot-toast";
 import './DetailList.css';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import ExcelJS from 'exceljs';
-import toast from "react-hot-toast";
-
-
 
 
 
@@ -142,59 +138,49 @@ useEffect(() => {
 },
   });
 
-  
 
-  
 
-  const convertToExcel = () => {
-if (!jsonData || jsonData.length === 0) {
-    toast.error("No data available to export");
-    return;
-}
+  // EXCEL EXPORT
+const exportExcel = async () => {
+  try {
+    const response = await axios.get(
+      `${process.env.REACT_APP_URL}/api/export/excel`,
+      {
+        withCredentials: true,
+        responseType: "blob",
+      }
+    );
 
-  const workbook = new ExcelJS.Workbook();
-  const worksheet = workbook.addWorksheet("Sheet1");
+    const url = window.URL.createObjectURL(
+      new Blob([response.data], {
+        type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      })
+    );
 
-  // Headers from the first object
-worksheet.columns = [
-  { header: "Name of UPSI", key: "NameoftheUPSI", width: 25 },
-  { header: "Info Shared By", key: "InfoSharedBy", width: 25 },
-  { header: "PAN Number 1", key: "PANNumber1", width: 20 },
-  { header: "Information Shared In Capacity 1", key: "InformationSharedInCapacity1", width: 30 },
-  { header: "Designation 1", key: "Designation1", width: 25 },
-  { header: "Info Shared To", key: "InfoSharedTo", width: 25 },
-  { header: "PAN Number 2", key: "PANNumber2", width: 20 },
-  { header: "Information Shared In Capacity 2", key: "InformationSharedInCapacity2", width: 30 },
-  { header: "Designation 2", key: "Designation2", width: 30 },
-  { header: "Type of Organization", key: "TypeofOrganization", width: 25 },
-  { header: "Organization", key: "NameoftheOrganization", width: 30 },
-  { header: "Date", key: "DateofSharing", width: 18 },
-  { header: "Particular", key: "ParticularofInfoShared", width: 30 },
-  { header: "Purpose", key: "PurposeofSharing", width: 30 },
-  { header: "Mode", key: "ModeofSharing", width: 20 },
-  { header: "Time", key: "TimeofSharing", width: 15 },
-];
+    const link = document.createElement("a");
 
-  // Add each document
-  jsonData.forEach((item) => {
-    worksheet.addRow({
-  ...item,
-  DateofSharing: item.DateofSharing
-    ? item.DateofSharing.split("T")[0]
-    : "",
-});
-  });
+    link.href = url;
+    link.setAttribute(
+      "download",
+      "UPSI_Details_Report.xlsx"
+    );
 
-  workbook.xlsx.writeBuffer().then((buffer) => {
-    const blob = new Blob([buffer], {
-      type:
-        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-    });
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
 
-    saveAs(blob, "data.xlsx");
-    toast.success("Excel downloaded successfully!");
-  });
+    window.URL.revokeObjectURL(url);
+
+    toast.success("Excel exported successfully!");
+  } catch (error) {
+    console.error("Excel export failed:", error);
+
+    toast.error("Failed to export Excel");
+  }
 };
+  
+
+
 
 const handleLogout = async () => {
   try {
@@ -455,7 +441,7 @@ const handleLogout = async () => {
 
 <div className="row">
   <div className="col-md-6">
-    <button type="button" onClick={convertToExcel} className="button excel-button">
+    <button type="button" onClick={exportExcel} className="button excel-button">
       Excel
     </button>
   </div>
