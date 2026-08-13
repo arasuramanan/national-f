@@ -37,7 +37,7 @@
 }
 
 .app-navbar-logo img {
-  height: 60px;
+  height: 55px;
   max-width: 260px;
 }
 
@@ -189,7 +189,7 @@
   }
 
   .app-navbar-logo img {
-    height: 52px;
+    height: 48px;
     max-width: 230px;
   }
 
@@ -276,7 +276,7 @@
   }
 
   .app-navbar-logo img {
-    height: 48px;
+    height: 44px;
     max-width: 210px;
   }
 
@@ -300,7 +300,7 @@
 @media (max-width: 380px) {
 
   .app-navbar-logo img {
-    height: 44px;
+    height: 40px;
     max-width: 190px;
   }
 
